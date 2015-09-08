@@ -12,12 +12,11 @@
     android:gravity="center">
 
     <TextView
-        android:text="@string/hello_world"
+        android:text="@string/question_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:padding="10dp"
-        android:id="@+id/textView"
         android:layout_marginBottom="5dp"/>
 
     <LinearLayout
@@ -28,12 +27,14 @@
         <Button
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Hello" />
+            android:id="@+id/true_button"
+            android:text="@string/true_button" />
 
         <Button
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Mello" />
+            android:id="@+id/false_button"
+            android:text="@string/false_button" />
 
     </LinearLayout>
 
