@@ -39,12 +39,25 @@
 
     </LinearLayout>
 
-    <Button
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:id="@+id/next_button"
-        android:text="@string/next_button"
-        android:drawableRight="@drawable/arrow_right"
-        android:drawablePadding="4dp"/>
+        android:gravity="center_horizontal" >
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/previous_button"
+            android:src="@drawable/arrow_left"
+            android:drawablePadding="4dp"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/next_button"
+            android:src="@drawable/arrow_right"
+            android:drawablePadding="4dp"/>
+
+    </LinearLayout>
 
 </LinearLayout>
