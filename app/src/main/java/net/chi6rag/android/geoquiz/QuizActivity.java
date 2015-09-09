@@ -43,32 +43,50 @@ public class QuizActivity extends AppCompatActivity {
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(QuizActivity.this, R.string.correct_toast, Toast.LENGTH_LONG).show();
+                boolean isRight = checkAnswer(true);
+                popupToast(isRight);
+                updateQuestion();
             }
         });
 
         mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText( QuizActivity.this,
-                                R.string.incorrect_toast,
-                                Toast.LENGTH_LONG
-                ).show();
+                boolean isRight = checkAnswer(false);
+                popupToast(isRight);
+                updateQuestion();
             }
         });
 
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCurrentIndex = (mCurrentIndex+1) % mQuestionBank.length;
                 updateQuestion();
             }
         });
     }
 
     private void updateQuestion(){
+        mCurrentIndex = (mCurrentIndex+1) % mQuestionBank.length;
         int mQuestionResId = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(mQuestionResId);
+    }
+
+    private boolean checkAnswer(boolean userPressedAnswer){
+        boolean mQuestionAnswer = mQuestionBank[mCurrentIndex].isAnswerTrue();
+        return mQuestionAnswer == userPressedAnswer;
+    }
+
+    private void popupToast(boolean isRight){
+        if(isRight){
+            Toast.makeText( QuizActivity.this,
+                    R.string.incorrect_toast,
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
+        else{
+            Toast.makeText(QuizActivity.this, R.string.correct_toast, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
